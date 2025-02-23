@@ -10,7 +10,6 @@ body {
   flex-direction: column;
   height: 100vh;
   margin: 0px;
-  overflow: hidden;
 }
 
 * {
@@ -37,7 +36,6 @@ a:hover {
 main {
   flex-grow: 1;
   position: relative;
-  overflow: hidden;
 }
 
 main > article {
@@ -50,7 +48,6 @@ main > article {
   left: 0px;
   top: 0px;
   transition: transform 400ms ease;  
-  overflow: hidden;
 }
 
 main > article[data-status="inactive"] {
