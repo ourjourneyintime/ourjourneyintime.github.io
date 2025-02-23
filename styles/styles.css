@@ -1,0 +1,179 @@
+:root {
+    --background-color: rgb(6, 11, 25);
+    --border-color: rgb(255, 255, 255, 0.1);
+    --highlight-color: rgb(126, 87, 194);
+  }
+  
+body {
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0px;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, a, p, span {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+  color: white;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--highlight-color);
+}
+
+/* Working on the general body of the page */
+
+main {
+  flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+main > article {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: transform 400ms ease;  
+  overflow: hidden;
+}
+
+main > article[data-status="inactive"] {
+  transform: translateX(-100%);
+  transition: none;
+}
+
+main > article[data-status="active"] {
+  transform: translateX(0%);
+}
+
+main > article[data-status="before"] {
+  transform: translateX(-100%);
+}
+
+main > article[data-status="after"] {
+  transform: translateX(100%);
+}
+
+main > article[data-status="becoming-active-from-before"] {
+  transform: translateX(-100%);
+  transition: none;
+}
+
+main > article[data-status="becoming-active-from-after"] {
+  transform: translateX(100%);
+  transition: none;
+}
+
+main > article > .article-section {
+  height: 100%;
+  display: flex;
+}
+
+main > article > .article-description-section,
+main > article > .article-nav-section {
+  border-left: 1px solid var(--border-color);
+}
+
+main > article > .article-title-section,
+main > article > .article-nav-section {
+  border-top: 1px solid var(--border-color);
+}
+
+/* Ensure the image section stays fixed */
+main > article > .article-image-section {
+  background-position: center;
+  background-size: cover;
+  grid-column: 2 / 2; /* Place in the first column */
+  grid-row: 1 / 2; /* Span both rows */
+}
+
+/* Ensure the title section stays fixed and text wraps */
+main > article > .article-title-section {
+  grid-column: 1 / 2; /* Place in the second column */
+  grid-row: 2 / 2; /* Place in the first row */
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px; /* Add padding for better spacing */
+  overflow: hidden; /* Prevent text from overflowing */
+  word-wrap: break-word; /* Allow long words to break and wrap */
+  white-space: normal; /* Ensure text wraps */
+}
+
+/* Ensure the description section stays fixed and text wraps */
+main > article > .article-description-section {
+  grid-column: 1 / 2; /* Place in the second column */
+  grid-row: 1 / 2; /* Place in the second row */
+  justify-content: center;
+  padding: 10px; /* Add padding for better spacing */
+  overflow: hidden; /* Prevent text from overflowing */
+  word-wrap: break-word; /* Allow long words to break and wrap */
+  white-space: normal; /* Ensure text wraps */
+}
+
+/* Ensure the navigation section stays fixed */
+main > article > .article-nav-section {
+  grid-column: 2 / 2; /* Place in the second column */
+  grid-row: 2 / 2; /* Place in the second row */
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between; /* Space out navigation buttons */
+  align-items: center; /* Center buttons vertically */
+  padding: 10px; /* Add padding for better spacing */
+}
+
+main > article > .article-title-section {
+  padding: 2rem;
+}
+
+main > article > .article-title-section > h2 {
+  flex-basis: 70%;
+  font-size: 1.5em; 
+  line-height: 1.5rem;
+}
+
+main > article > .article-title-section > i {
+  font-size: 2rem; 
+}
+
+main > article > .article-description-section {
+  padding: 2rem;
+}
+
+main > article > .article-description-section > p {
+  font-size: 1rem;
+}
+
+/* Nav button */
+
+main > article > .article-nav-section > .article-nav-button {
+  background-color: transparent;
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+main > article > .article-nav-section > .article-nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+main > article > .article-nav-section > .article-nav-button:nth-child(2) {
+  border-left: 1px solid var(--border-color);
+}
